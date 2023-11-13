@@ -1,0 +1,52 @@
+:root {
+  font-family: Inter, Satoshi, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #242424;
+  background-color: #fcfcfc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  max-width: 640px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.shado {
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+.shade {
+  box-shadow: 0px 4px 10px 0px rgba(16, 24, 40, 0.20);
+}
+
+.video-player {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* for 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+.video-player video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
