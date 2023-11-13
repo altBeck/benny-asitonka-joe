@@ -162,7 +162,7 @@ const Home = () => {
             'Negotiated and managed relationships with diverse vendors, optimizing costs while maintaining high-quality standards. Achieved a 15% cost reduction in vendor agreements for event resources.',
         },
         {
-          title: 'Vendor Management: ',
+          title: 'Event Management: ',
           description:
             'Orchestrated the entire event life cycle, from conceptualization to execution. Achieved an annual attendance of 2000+ attendees, establishing the comic-con as a premier event in Rivers State. Coordinated logistics, scheduling, and on-site management, ensuring a seamless and memorable experience for participants.',
         },
