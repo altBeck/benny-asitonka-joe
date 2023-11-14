@@ -15,7 +15,7 @@ const Carousel = ({ images }) => {
     <Slider {...settings}>
       {images && images.map((imageUrl, index) => (
         <div key={index} className="p-px">
-          <img src={imageUrl} alt={`media-${index}`} className="rounded" />
+          <img src={imageUrl} alt={`media-${index}`} loading="lazy" className="rounded" />
         </div>
       ))}
     </Slider>

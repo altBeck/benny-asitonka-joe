@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
-import Carousel from "../../components/carousel/Carousel";
-import Work from "../../components/work/Work";
+import { ProjectItem, Work, Carousel } from "../../components";
 
 import lkdn from "../../assets/LinkedIn.svg";
 import insta from "../../assets/insta.svg"
@@ -20,8 +19,18 @@ import img10 from "../../assets/otaku-connect-1.jpeg"
 
 const nerdworkImages = [ img1, img2, img3, img4, img5 ];
 const otakuImages = [ img6, img7, img8, img9, img10 ];
+const videoUrl = [ video ];
 
 const Home = () => {
+
+  const projects = [
+    {
+      title: 'Nerdwork Comic-Con 2023',
+      description: 'Nerdwork is an entertainment startup specialising in organising the largest annual comic convention event in Rivers State, fostering community engagement among its 1000+ members, celebrating Japanese and Western pop culture through events, competitions, cosplay, gaming, art displays, guest appearances and interactive experiences.',
+      videoUrl: video,
+    },
+  ];
+
   const workExperiences = [
     {
       company: 'Nerdwork',
@@ -41,7 +50,7 @@ const Home = () => {
         {
           title: 'Community Management: ',
           description:
-            'Led a dynamic team of 1000+ members, fostering engagement and collaboration within the community, resulting in a 30% increase in active participation and enthusiasm.',
+            'Led a dynamic community of 1000+ members, fostering engagement and collaboration within the community, resulting in a 30% increase in active participation and enthusiasm.',
         },
         {
           title: 'Vendor Management: ',
@@ -157,7 +166,7 @@ const Home = () => {
 
       <section>
         <div>
-          <div className="pb-4">
+          <div className="pb-8">
             <h1 className="text-gray-500 font-medium">Summary</h1>
             <p>Dynamic and results-driven product manager with a background in architecture, offering a unique blend of creativity and project management skills. Proven ability to lead cross-functional teams and deliver successful projects in diverse settings.</p>
           </div>
@@ -166,20 +175,23 @@ const Home = () => {
       </section>
 
       <section>
-        <div>
-          <div className="pb-4">
+        <div className="pb-8">
+          <div className="pb-2">
             <h1 className="text-gray-500 font-medium">Projects</h1>
-
-            <p className="pt-4">Nerdwork is an entertainment startup specialising in organising the largest annual comic convention event in Rivers State, fostering community engagement among its 1000+ members, celebrating Japanese and Western pop culture through events, competitions, cosplay, gaming, art displays, guest appearances and interactive experiences.</p>
           </div>
 
-          <Carousel />
+          <div className="space-y-4">
+            {projects.map((project, index) => (
+              <ProjectItem key={index} {...project} />
+            ))}
+          </div>
+
         </div>
       </section>
 
       <section>
         <div>
-          <div className="pb-4">
+          <div className="pb-2">
             <h1 className="text-gray-500 font-medium">Work Experience</h1>
           </div>
 
@@ -195,7 +207,7 @@ const Home = () => {
 
       <section className="pt-8">
         <h1 className="text-gray-500 font-medium">Education</h1>
-        <div className="pt-4">
+        <div className="pt-2">
           <h3 className="font-semibold text-lg">Rivers State University</h3>
           <ul className="space-y-2">
             <li className="font-medium text-md">Architecture (Bachelor of Technology, Architecture) <br/> <span className="font-normal text-sm">2014 - 2018</span></li>
