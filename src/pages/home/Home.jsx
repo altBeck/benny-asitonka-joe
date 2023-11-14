@@ -167,7 +167,7 @@ const Home = () => {
       <section>
         <div>
           <div className="pb-8">
-            <h1 className="text-gray-500 font-medium">Summary</h1>
+            <h1 className="text-gray-500 font-medium pb-2">Summary</h1>
             <p>Dynamic and results-driven product manager with a background in architecture, offering a unique blend of creativity and project management skills. Proven ability to lead cross-functional teams and deliver successful projects in diverse settings.</p>
           </div>
 
