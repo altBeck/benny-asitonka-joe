@@ -1,138 +1,25 @@
 import { useRef, useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Carousel from "../../components/carousel/Carousel";
+import Work from "../../components/work/Work";
 
 import lkdn from "../../assets/LinkedIn.svg";
 import insta from "../../assets/insta.svg"
-import play from "../../assets/play.svg";
 import logo from "/logo-06.png";
 
 import video from "../../assets/video.mp4";
-import img1 from "../../assets/OTAKU-9442.jpg";
-import img2 from "../../assets/OTAKU-9445 (1).jpg";
-import img3 from "../../assets/OTAKU-9447.jpg";
-import img4 from "../../assets/OTAKU-9457.jpg";
-import img5 from "../../assets/Shifu Shotz-11.jpg";
-import img6 from "../../assets/Shifu Shotz-12.jpg";
+import img1 from "../../assets/nerdwork.jpeg";
+import img2 from "../../assets/nerdowk-1.jpeg";
+import img3 from "../../assets/nerdowrk-2.jpeg";
+import img4 from "../../assets/Shifu Shotz-11.jpg";
+import img5 from "../../assets/Shifu Shotz-12.jpg";
+import img6 from "../../assets/OTAKU-9442.jpg";
+import img7 from "../../assets/OTAKU-9445 (1).jpg";
+import img8 from "../../assets/OTAKU-9447.jpg";
+import img9 from "../../assets/OTAKU-9457.jpg";
+import img10 from "../../assets/otaku-connect-1.jpeg"
 
-const ProjectCarousel = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
-  const mediaItems = [
-    {
-      type: "video",
-      url: video,
-    },
-    {
-      type: "image",
-      url: img1,
-    },
-    {
-      type: "image",
-      url: img2,
-    },
-    {
-      type: "image",
-      url: img3,
-    },
-    {
-      type: "image",
-      url: img4,
-    },
-    {
-      type: "image",
-      url: img5,
-    },
-    {
-      type: "image",
-      url: img6,
-    },
-  ];
-
-  return (
-  <Slider {...settings}>
-    {mediaItems.map((item, index) => (
-      <div key={index}>
-        {item.type === "video" ? (
-          <video width="100%" height="auto" controls>
-            <source src={item.url} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <img src={item.url} alt={`media-${index}`} />
-        )}
-      </div>
-    ))}
-  </Slider>
-  );
-};
-
-const VideoPlayer = ({ src }) => {
-  const videoRef = useRef();
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  return (
-    <div className="video-player">
-      <video width="100%" ref={videoRef} onClick={handlePlayPause}>
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      {!isPlaying && (
-        <img
-          src={play}
-          className="play-button"
-          onClick={handlePlayPause}
-          alt="Play video"
-        />
-      )}
-    </div>
-  );
-};
-
-const WorkExperienceItem = ({ company, role, duration, details }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleExpansion = () => {
-    setIsExpanded(!isExpanded);
-  };
-
-  return (
-    <div className="border shado p-4 rounded-lg bg-[f2f2f2]">
-      <div onClick={toggleExpansion} className="cursor-pointer text-lg font-semibold">
-        {company} <span className="text-base">({duration})</span>
-      </div>
-      {isExpanded && (
-        <div className="mt-2">
-          <h4 className="font-semibold mb-2 text-gray-600">{role}</h4>
-          <ul className="space-y-2">
-            {details.map((detail, index) => (
-              <li key={index}>
-                <span className="font-medium">{detail.title}</span>
-                {detail.description}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
+const nerdworkImages = [ img1, img2, img3, img4, img5 ];
+const otakuImages = [ img6, img7, img8, img9, img10 ];
 
 const Home = () => {
   const workExperiences = [
@@ -167,6 +54,7 @@ const Home = () => {
             'Orchestrated the entire event life cycle, from conceptualization to execution. Achieved an annual attendance of 2000+ attendees, establishing the comic-con as a premier event in Rivers State. Coordinated logistics, scheduling, and on-site management, ensuring a seamless and memorable experience for participants.',
         },
       ],
+      images: nerdworkImages,
     },
 
     {
@@ -195,6 +83,7 @@ const Home = () => {
             'Implemented targeted marketing strategies that led to a 25% increase in attendance compared to the previous year, showcasing effective planning and execution.',
         },
       ],
+      images: otakuImages,
     },
 
     {
@@ -276,7 +165,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="pb-14">
+      <section>
         <div>
           <div className="pb-4">
             <h1 className="text-gray-500 font-medium">Projects</h1>
@@ -284,7 +173,7 @@ const Home = () => {
             <p className="pt-4">Nerdwork is an entertainment startup specialising in organising the largest annual comic convention event in Rivers State, fostering community engagement among its 1000+ members, celebrating Japanese and Western pop culture through events, competitions, cosplay, gaming, art displays, guest appearances and interactive experiences.</p>
           </div>
 
-          <ProjectCarousel />
+          <Carousel />
         </div>
       </section>
 
@@ -295,9 +184,11 @@ const Home = () => {
           </div>
 
           <div className="space-y-4">
-          {workExperiences.map((experience, index) => (
-            <WorkExperienceItem key={index} {...experience} />
-          ))}
+            {workExperiences.map((experience, index) => (
+              <div key={index}>
+                <Work {...experience} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
